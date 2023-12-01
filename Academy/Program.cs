@@ -13,7 +13,7 @@ namespace Academy
     {
         static void Main(string[] args)
         {
-#if SOMETHINK
+
             Human human = new Human("Vercetti", "Tommy", 30);
             human.Info();
             Console.WriteLine(human);
@@ -41,31 +41,59 @@ namespace Academy
                 new Teacher("Diaz","Ricardo",50,"Weapons distribution",25)
             };
             Console.WriteLine("\n_________________________________________________________\n");
+            Print(group);
+            Save(group, "group.txt");
+            Console.WriteLine("\n_________________________________________________________\n");
+
+
+
+
+
+        }
+        public static void Print(Human[] group)
+        {
             for (int i = 0; i < group.Length; i++)
             {
                 Console.WriteLine(group[i]);
             }
-            Directory.SetCurrentDirectory(Directory.GetCurrentDirectory());
-            Console.WriteLine("\n_________________________________________________________\n"); 
-#endif
-
-#if WRITE_TO_FILE
-            StreamWriter sw = new StreamWriter("group.txt");
-            foreach (Human i in group) 
+        }
+        public static void Save(Human[] group, string filename)
+        {
+            Directory.SetCurrentDirectory("..\\..");
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            Console.WriteLine("\n_________________________________________________________\n");
+            StreamWriter sw = new StreamWriter(filename);
+            foreach (Human i in group)
                 sw.WriteLine
-                    (
-                    $"{i.GetType().ToString().Split('.').Last()}:{i}"
-                    );
+                (
+                $"{i.GetType().ToString().Split('.').Last()}:{i};"
+                );
             sw.Close();
             System.Diagnostics.Process.Start("notepad", $"{Directory.GetCurrentDirectory()}\\group.txt");
-            Console.WriteLine("\n_________________________________________________________\n"); 
-#endif
-
-
-            
-        
         }
+        public static Human[] Load(string filename)
+        {
+            List<Human> group = new List<Human>();
+            StreamReader sr = new StreamReader(filename); // Открываем поток 
+            while (!sr.EndOfStream)
+            {
+            string buffer = sr.ReadToEnd();
+            string[] values = buffer.Split(',', ':',':') ;
+            group.Add(HumanFactory(values[0]));
+            if (group.Last() == null) group.RemoveAt(group.Count - 1);
+            else group.Last().Init(values);
+            }
+            sr.Close(); // Закрываем поток
+            return null;
 
+        }
+        public static Human HumanFactory(string type)
+        {
+            if (type == "Student") return new Student("", "", 0, "", "", 0, 0);
+            if (type == "Graduate") return new Graduate("", "", 0, "", "", 0, 0, "");
+            if (type == "Teacher") return new Teacher("", "", 0, "", 0);
+            return null;
+        }
 
     }
 }

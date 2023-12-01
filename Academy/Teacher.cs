@@ -28,11 +28,11 @@ namespace Academy
         public void Info()
         {
             base.Info();
-            Console.WriteLine($"{Speciality} {Experience} лет");
+            Console.WriteLine($"{Speciality}, {Experience}");
         }
         public override string ToString()
         {
-            return base.ToString() + $" {Speciality} {Experience} лет ";
+            return base.ToString() + $",{Speciality},{Experience} ";
         }
     }
 }

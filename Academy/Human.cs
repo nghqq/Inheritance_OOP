@@ -36,7 +36,8 @@ namespace Academy
         }
         public override string ToString()
         {
-            return $"{LastName} {FirstName} {Age} лет";
+            return $",{LastName},{FirstName},{Age} ";
         }
+       
     }
 }
