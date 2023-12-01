@@ -73,19 +73,20 @@ namespace Academy
         }
         public static Human[] Load(string filename)
         {
+            Directory.SetCurrentDirectory("..\\..");
+            Console.WriteLine(Directory.GetCurrentDirectory());
             List<Human> group = new List<Human>();
-            StreamReader sr = new StreamReader(filename); // Открываем поток 
+            StreamReader sr = new StreamReader(filename);
             while (!sr.EndOfStream)
             {
-            string buffer = sr.ReadToEnd();
-            string[] values = buffer.Split(',', ':',':') ;
-            group.Add(HumanFactory(values[0]));
-            if (group.Last() == null) group.RemoveAt(group.Count - 1);
-            else group.Last().Init(values);
+                string buffer = sr.ReadLine();
+                string[] values = buffer.Split(':', ',', ';');
+                group.Add(HumanFactory(values[0]));
+                if (group.Last() == null) group.RemoveAt(group.Count - 1);
+                else group.Last().Init(values);
             }
-            sr.Close(); // Закрываем поток
-            return null;
-
+            sr.Close();
+            return group.ToArray();
         }
         public static Human HumanFactory(string type)
         {
