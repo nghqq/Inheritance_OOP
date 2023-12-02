@@ -29,7 +29,7 @@ namespace Academy
         {
             Console.WriteLine("GFinalizer:\t"+GetHashCode());
         }
-        public void Info()
+        public override void Info()
         {
             base.Info();
             Console.WriteLine($"{Subject}");

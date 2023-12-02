@@ -9,6 +9,10 @@ namespace Academy
 {
     internal class Student:Human
     {
+        const int SPECIALITY_WIDTH = 20;
+        const int GROUP_WIDTH = 8;
+        const int RATING_WIDTH = 6;
+        const int ATTENDANCE_WIDTH = 6;
         public string Speciality { get; set; }
         public string Group { get; set; }
         public double Rating { get; set; }
@@ -47,10 +51,12 @@ namespace Academy
         {
             Console.WriteLine("SFinalizer:\t" + GetHashCode());
         }
-        public void Info()
+        public override void Info()
         {
             base.Info();
-            Console.WriteLine($"{Speciality} {Group} {Rating} {Attendance}");
+            Console.Write($"{Speciality.PadRight(SPECIALITY_WIDTH)}" +
+                $"{Group.PadRight(GROUP_WIDTH)} {Rating.ToString().PadRight(RATING_WIDTH)}" +
+                $"{Attendance.ToString().PadRight(ATTENDANCE_WIDTH)}");
         }
         
         public override string ToString()

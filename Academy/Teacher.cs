@@ -9,6 +9,8 @@ namespace Academy
 {
     internal class Teacher : Human
     {
+        const int SPECIALITY_WIDTH = 20;
+        const int EXPERIENCE_WIDTH = 5;
         public string Speciality { get; set; }
         public int Experience { get; set; }
         public Teacher
@@ -25,10 +27,11 @@ namespace Academy
         {
             Console.WriteLine("TFinalizer:\t" + GetHashCode());
         }
-        public void Info()
+        public override void Info()
         {
             base.Info();
-            Console.WriteLine($"{Speciality}, {Experience}");
+            Console.Write($"{Speciality.PadRight(SPECIALITY_WIDTH)}" +
+                $" {Experience.ToString().PadRight(EXPERIENCE_WIDTH)}");
         }
         public override string ToString()
         {

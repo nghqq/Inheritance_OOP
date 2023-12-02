@@ -38,7 +38,7 @@ namespace Academy
 
             Human[] group = new Human[]
             {
-                student,teacher, tommy,
+                student,teacher, tommy_grad,graduate,
                 new Graduate("Rosenberg","Ken",30,"Lawyer","Vice",45,22,"How to get money back"),
                 new Teacher("Diaz","Ricardo",50,"Weapons distribution",25)
             };
@@ -56,7 +56,9 @@ namespace Academy
         {
             for (int i = 0; i < group.Length; i++)
             {
-                Console.WriteLine(group[i]);
+                //Console.WriteLine(group[i]);
+                group[i].Info();
+                Console.WriteLine();
             }
         }
         public static void Save(Human[] group, string filename)
