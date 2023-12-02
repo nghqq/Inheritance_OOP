@@ -34,6 +34,15 @@ namespace Academy
             Attendance = attendance;
             Console.WriteLine("SConstuctor:\t" + GetHashCode());
         }
+        public Student(Student other) : base(other)
+        {
+
+            this.Speciality = other.Speciality;
+            this.Group = other.Group;
+            this.Rating = other.Rating;
+            this.Attendance = other.Attendance;
+            Console.WriteLine("SCopyconstuctor:\t" + GetHashCode());
+        }
         ~Student() 
         {
             Console.WriteLine("SFinalizer:\t" + GetHashCode());
@@ -43,15 +52,7 @@ namespace Academy
             base.Info();
             Console.WriteLine($"{Speciality} {Group} {Rating} {Attendance}");
         }
-        public Student(Student other):base(other)
-        {
-            
-            this.Speciality = other.Speciality;
-            this.Group = other.Group;
-            this.Rating = other.Rating;
-            this.Attendance = other.Attendance;
-            Console.WriteLine("SCopyconstuctor:\t" + GetHashCode());
-        }
+        
         public override string ToString()
         {
             return base.ToString() + $",{Speciality},{Group},{Rating},{Attendance}";
@@ -59,8 +60,9 @@ namespace Academy
         public override void Init(string[] values)
         {
             base.Init(values);
-            Speciality = values[4];
+            Speciality = (values[4].Trim()); // Трим убирает лишние пробелы
             Group = values[5];
+            values[6] = values[6].Trim();
             Rating = Convert.ToDouble(values[6]);
             Attendance = Convert.ToDouble(values[7]);
         }

@@ -1,4 +1,5 @@
-﻿#define WRITE_TO_FILE
+﻿//#define WRITE_TO_FILE
+#define READ_FROM_FILE
 #define SOMETHINK
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Academy
         static void Main(string[] args)
         {
 
+#if WRITE_TO_FILE
             Human human = new Human("Vercetti", "Tommy", 30);
             human.Info();
             Console.WriteLine(human);
@@ -37,18 +39,18 @@ namespace Academy
             Human[] group = new Human[]
             {
                 student,teacher, tommy,
-                new Graduate("Rosenberg","Ken",30,"Lower","Vice",45,22,"How to get money back"),
+                new Graduate("Rosenberg","Ken",30,"Lawyer","Vice",45,22,"How to get money back"),
                 new Teacher("Diaz","Ricardo",50,"Weapons distribution",25)
             };
             Console.WriteLine("\n_________________________________________________________\n");
             Print(group);
             Save(group, "group.txt");
-            Console.WriteLine("\n_________________________________________________________\n");
-
-
-
-
-
+            Console.WriteLine("\n_________________________________________________________\n"); 
+#endif
+#if READ_FROM_FILE
+            Human[] group = Load("group.txt");
+            Print(group); 
+#endif
         }
         public static void Print(Human[] group)
         {

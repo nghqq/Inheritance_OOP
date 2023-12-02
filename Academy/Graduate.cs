@@ -38,5 +38,10 @@ namespace Academy
         {
             return base.ToString() + $",{Subject}";
         }
+        public override void Init(string[] values)
+        {
+            base.Init(values);
+            Subject= values[8];
+        }
     }
 }

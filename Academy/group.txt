@@ -1,5 +1,5 @@
-Student:,Pinkman,Jessie,25 ,Chemistry,WW_220,95,98;
-Teacher:,Walter,White,50 ,Chemistry,20 ;
-Student:,Vercetti,Tommy,30 ,Theft,Vice,98,99;
-Graduate:,Rosenberg,Ken,30 ,Lower,Vice,45,22,How to get money back;
-Teacher:,Diaz,Ricardo,50 ,Weapons distribution,25 ;
+Student:Pinkman,Jessie,25 ,Chemistry,WW_220,95,98;
+Teacher:Walter,White,50 ,Chemistry,20 ;
+Student:Vercetti,Tommy,30 ,Theft,Vice,98,99;
+Graduate:Rosenberg,Ken,30 ,Lawyer,Vice,45,22,How to get money back;
+Teacher:Diaz,Ricardo,50 ,Weapons distribution,25 ;
